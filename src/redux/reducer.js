@@ -29,6 +29,14 @@ const reducer = (state = {
                 ...state,
                 currentOperand: state.currentOperand + action.digit,
             }
+        case ACTIONS.DELETE_DIGIT:
+            if (state.currentOperand === '') {
+                return state;
+            }
+            return {
+                ...state,
+                currentOperand: state.currentOperand.slice(0, -1),
+            }
         default:
             return state;
     }

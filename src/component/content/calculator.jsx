@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Base from './base';
 import { connect } from 'react-redux';
 import DigitButton from './calculator/digitButton';
+import ACTIONS from '../../redux/actions';
 
 class Calculator extends Component {
     state = {  } 
@@ -19,7 +20,7 @@ class Calculator extends Component {
                             </div>
                         </div>
                         <button className='button-ac'>AC</button>
-                        <button>Del</button>
+                        <button onClick={this.props.delete_digit}>Del</button>
                         <button>÷</button>
                         <DigitButton digit={"7"}></DigitButton>
                         <DigitButton digit={"8"}></DigitButton>
@@ -51,4 +52,12 @@ const mapStateToProps = (state, props) => {
     }
 };
 
-export default connect(mapStateToProps)(Calculator);
+const mapDispatchToProps = {
+    delete_digit: () => {
+        return {
+            type: ACTIONS.DELETE_DIGIT,
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calculator);
