@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Base from './base';
+import { connect } from 'react-redux';
+import DigitButton from './calculator/digitButton';
 
 class Calculator extends Component {
     state = {  } 
@@ -9,26 +11,30 @@ class Calculator extends Component {
                 <Base>
                     <div className='calculator'>
                         <div className='output'>
-                            <div className='last-output'>1919 *</div>
-                            <div className='current-output'>810810810810810810810810810</div>
+                            <div className='last-output'>
+                                {this.props.lastOperand} {this.props.operation}
+                            </div>
+                            <div className='current-output'>
+                                {this.props.currentOperand}
+                            </div>
                         </div>
                         <button className='button-ac'>AC</button>
                         <button>Del</button>
-                        <button>/</button>
-                        <button>7</button>
-                        <button>8</button>
-                        <button>9</button>
-                        <button>*</button>
-                        <button>4</button>
-                        <button>5</button>
-                        <button>6</button>
+                        <button>÷</button>
+                        <DigitButton digit={"7"}></DigitButton>
+                        <DigitButton digit={"8"}></DigitButton>
+                        <DigitButton digit={"9"}></DigitButton>
+                        <button>×</button>
+                        <DigitButton digit={"4"}></DigitButton>
+                        <DigitButton digit={"5"}></DigitButton>
+                        <DigitButton digit={"6"}></DigitButton>
                         <button>-</button>
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
+                        <DigitButton digit={"1"}></DigitButton>
+                        <DigitButton digit={"2"}></DigitButton>
+                        <DigitButton digit={"3"}></DigitButton>
                         <button>+</button>
-                        <button>0</button>
-                        <button>.</button>
+                        <DigitButton digit={"0"}></DigitButton>
+                        <DigitButton digit={"."}></DigitButton>
                         <button className='button-equal'>=</button>
                     </div>
                 </Base>
@@ -37,4 +43,12 @@ class Calculator extends Component {
     }
 }
  
-export default Calculator;
+const mapStateToProps = (state, props) => {
+    return {
+        currentOperand: state.currentOperand,
+        lastOperand: state.lastOperand,
+        operation: state.operation
+    }
+};
+
+export default connect(mapStateToProps)(Calculator);
