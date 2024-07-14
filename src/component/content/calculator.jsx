@@ -20,7 +20,7 @@ class Calculator extends Component {
                                 {this.props.currentOperand}
                             </div>
                         </div>
-                        <button className='button-ac'>AC</button>
+                        <button className='button-ac' onClick={this.props.clear}>AC</button>
                         <button onClick={this.props.delete_digit}>Del</button>
                         <OperationButton operation={"÷"}></OperationButton>
                         <DigitButton digit={"7"}></DigitButton>
@@ -57,6 +57,12 @@ const mapDispatchToProps = {
     delete_digit: () => {
         return {
             type: ACTIONS.DELETE_DIGIT,
+        }
+    },
+
+    clear: () => {
+        return {
+            type: ACTIONS.CLEAR,
         }
     }
 }

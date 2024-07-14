@@ -84,6 +84,13 @@ const reducer = (state = {
                 operation: action.operation,
                 currentOperand: '',
             }
+        case ACTIONS.CLEAR:
+            return {
+                ...state,
+                currentOperand: '',
+                operation: '',
+                lastOperand: '',
+            }
         default:
             return state;
     }
