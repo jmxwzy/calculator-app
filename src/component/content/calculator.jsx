@@ -37,7 +37,7 @@ class Calculator extends Component {
                         <OperationButton operation={"+"}></OperationButton>
                         <DigitButton digit={"0"}></DigitButton>
                         <DigitButton digit={"."}></DigitButton>
-                        <button className='button-equal'>=</button>
+                        <button onClick={this.props.evaluate} className='button-equal'>=</button>
                     </div>
                 </Base>
             </React.Fragment>
@@ -63,6 +63,12 @@ const mapDispatchToProps = {
     clear: () => {
         return {
             type: ACTIONS.CLEAR,
+        }
+    },
+
+    evaluate: () => {
+        return {
+            type: ACTIONS.EVALUATE,
         }
     }
 }

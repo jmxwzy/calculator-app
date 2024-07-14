@@ -91,6 +91,17 @@ const reducer = (state = {
                 operation: '',
                 lastOperand: '',
             }
+        case ACTIONS.EVALUATE:
+            if (state.currentOperand === "" ||
+                state.lastOperand === "" ||
+                state.operation === "")
+                return state;
+            return {
+                ...state,
+                currentOperand: evaluate(state),
+                lastOperand: '',
+                operation: '',
+            }
         default:
             return state;
     }
