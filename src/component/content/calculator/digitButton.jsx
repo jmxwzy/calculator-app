@@ -15,7 +15,7 @@ class DigitButton extends Component {
     }
 }
 
-const mapStateToProps = {
+const mapDispatchToProps = {
     add_digit: digit => {
         return {
             type: ACTIONS.ADD_DIGIT,
@@ -24,4 +24,4 @@ const mapStateToProps = {
     }  
 };
  
-export default connect(null, mapStateToProps)(DigitButton);
+export default connect(null, mapDispatchToProps)(DigitButton);

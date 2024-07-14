@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Base from './base';
 import { connect } from 'react-redux';
 import DigitButton from './calculator/digitButton';
+import OperationButton from './calculator/operationButton';
 import ACTIONS from '../../redux/actions';
 
 class Calculator extends Component {
@@ -21,19 +22,19 @@ class Calculator extends Component {
                         </div>
                         <button className='button-ac'>AC</button>
                         <button onClick={this.props.delete_digit}>Del</button>
-                        <button>÷</button>
+                        <OperationButton operation={"÷"}></OperationButton>
                         <DigitButton digit={"7"}></DigitButton>
                         <DigitButton digit={"8"}></DigitButton>
                         <DigitButton digit={"9"}></DigitButton>
-                        <button>×</button>
+                        <OperationButton operation={"×"}></OperationButton>
                         <DigitButton digit={"4"}></DigitButton>
                         <DigitButton digit={"5"}></DigitButton>
                         <DigitButton digit={"6"}></DigitButton>
-                        <button>-</button>
+                        <OperationButton operation={"-"}></OperationButton>
                         <DigitButton digit={"1"}></DigitButton>
                         <DigitButton digit={"2"}></DigitButton>
                         <DigitButton digit={"3"}></DigitButton>
-                        <button>+</button>
+                        <OperationButton operation={"+"}></OperationButton>
                         <DigitButton digit={"0"}></DigitButton>
                         <DigitButton digit={"."}></DigitButton>
                         <button className='button-equal'>=</button>
