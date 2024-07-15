@@ -41,28 +41,26 @@ class Login extends Component {
         return (
             <React.Fragment>
                 <Base>
-                <div className="container">
-                    <div className="row justify-content-md-center">
-                        <div className="col col-sm-3">
-                            <form>
-                                <div className="mb-3">
-                                    <label htmlFor="username" className="form-label">用户名</label>
-                                    <input onChange={e => {this.setState({username: e.target.value})}} type="text" className="form-control" id="username" aria-describedby="emailHelp" />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="password" className="form-label">密码</label>
-                                    <input onChange={e => {this.setState({password: e.target.value})}} type="password" className="form-control" id="exampleInputPassword1" />
-                                </div>
-                                <div style={{height: "2rem", color: "red"}}>
-                                    {this.state.error_message}
-                                </div>
-                                <button onClick={this.handleClick} type="submit" style={{width: "100%"}} className="btn btn-primary">登录</button>
-                            </form>
+                    <div className="container">
+                        <div className="row justify-content-md-center">
+                            <div className="col col-sm-3">
+                                <form>
+                                    <div className="mb-3">
+                                        <label htmlFor="username" className="form-label">用户名</label>
+                                        <input onChange={e => {this.setState({username: e.target.value})}} type="text" className="form-control" id="username" aria-describedby="emailHelp" />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="password" className="form-label">密码</label>
+                                        <input onChange={e => {this.setState({password: e.target.value})}} type="password" className="form-control" id="password" />
+                                    </div>
+                                    <div style={{height: "2rem", color: "red"}}>
+                                        {this.state.error_message}
+                                    </div>
+                                    <button onClick={this.handleClick} type="submit" style={{width: "100%"}} className="btn btn-primary">登录</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                    
                 </Base>
             </React.Fragment>
         );
