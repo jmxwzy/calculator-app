@@ -34,7 +34,7 @@ class Register extends Component {
                 success: resp => {
                     // console.log(resp);
                     if (resp.result === "success") {
-                        window.location.href="/calculator/"
+                        window.location.href="/calculator"
                     } else {
                         this.setState({error_message: resp.result});
                     }
