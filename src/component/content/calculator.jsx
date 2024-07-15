@@ -6,7 +6,18 @@ import OperationButton from './calculator/operationButton';
 import ACTIONS from '../../redux/actions';
 
 class Calculator extends Component {
-    state = {  } 
+    state = {
+        formater: Intl.NumberFormat('en-us')
+    }; 
+
+    format = number => {
+        const [intger, decimal] = number.split('.');
+        if (decimal === undefined) {
+            return this.state.formater.format(intger);
+        }
+        return `${this.state.formater.format(intger)}.${decimal}`;
+    };
+
     render() { 
         return (
             <React.Fragment>
@@ -14,10 +25,10 @@ class Calculator extends Component {
                     <div className='calculator'>
                         <div className='output'>
                             <div className='last-output'>
-                                {this.props.lastOperand} {this.props.operation}
+                                {this.format(this.props.lastOperand)} {this.props.operation}
                             </div>
                             <div className='current-output'>
-                                {this.props.currentOperand}
+                                {this.format(this.props.currentOperand)}
                             </div>
                         </div>
                         <button className='button-ac' onClick={this.props.clear}>AC</button>

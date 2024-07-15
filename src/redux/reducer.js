@@ -27,9 +27,18 @@ const reducer = (state = {
     currentOperand: "",
     lastOperand: "",
     operation: "",
+    overwrite: false,
 }, action) => {
     switch (action.type) {
         case ACTIONS.ADD_DIGIT:
+            if (state.overwrite) {
+                return {
+                    ...state,
+                    currentOperand: action.digit,
+                    overwrite: false,
+                }
+            }
+
             if (state.currentOperand === '0' && action.digit === '0') { // 只有0时不能打出多个0
                 return state;
             }
@@ -53,6 +62,13 @@ const reducer = (state = {
                 currentOperand: state.currentOperand + action.digit,
             }
         case ACTIONS.DELETE_DIGIT:
+            if (state.overwrite) {
+                return {
+                    ...state,
+                    currentOperand: "",
+                    overwrite: false,
+                }
+            }
             if (state.currentOperand === '') {
                 return state;
             }
@@ -101,6 +117,7 @@ const reducer = (state = {
                 currentOperand: evaluate(state),
                 lastOperand: '',
                 operation: '',
+                overwrite: true, // 计算出结果后显示结果，如果再点击数字按钮，那么输入的数字应该是可以覆盖掉当前显示的结果的
             }
         default:
             return state;
